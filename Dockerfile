@@ -1,5 +1,5 @@
 # Multi-stage build — SerPro Technology landing (TanStack Start + Nitro)
-FROM node:20-bookworm-slim AS builder
+FROM node:22-bookworm-slim AS builder
 
 WORKDIR /app
 
@@ -9,7 +9,7 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-FROM node:20-bookworm-slim AS runner
+FROM node:22-bookworm-slim AS runner
 
 RUN apt-get update && apt-get install -y --no-install-recommends curl \
   && rm -rf /var/lib/apt/lists/*
