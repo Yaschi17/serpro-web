@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: serprotechno-web
+    container_name: serpro-web
     restart: unless-stopped
     environment:
       NODE_ENV: production

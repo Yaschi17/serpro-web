@@ -2,10 +2,10 @@
 # Primera instalación en el servidor (una sola vez)
 set -e
 
-REPO_URL="${1:-https://github.com/Yaschi17/serprotechno-web.git}"
-TARGET="${2:-/home/serpro/serprotechno-web}"
+REPO_URL="${1:-https://github.com/Yaschi17/serpro-web.git}"
+TARGET="${2:-/home/serpro/serpro-web}"
 
-echo "=== Instalando serprotechno-web en $TARGET ==="
+echo "=== Instalando serpro-web en $TARGET ==="
 
 if [ -d "$TARGET/.git" ]; then
   echo "Ya existe el repo. Usa: cd $TARGET && bash scripts/update.sh"

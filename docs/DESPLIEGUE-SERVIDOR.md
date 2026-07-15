@@ -10,7 +10,9 @@ PC (cambios) → git push GitHub → publicar.bat → SSH servidor → docker re
 |----------|------------------|---------|
 | panel-control | `/home/serpro/panel-control` | `serprotechno.org` |
 | Abarrotería POS | `/home/serpro/abarroteria` | `posserprotechno.org` |
-| **Landing web** | `/home/serpro/serprotechno-web` | **`serprotechno.com`** |
+| **Landing web** | `/home/serpro/serpro-web` | **`serprotechno.com`** |
+
+Repo GitHub: `https://github.com/Yaschi17/serpro-web.git`
 
 ## 1. Una sola vez en esta PC
 
@@ -21,10 +23,9 @@ PC (cambios) → git push GitHub → publicar.bat → SSH servidor → docker re
 ## 2. Una sola vez en el servidor
 
 ```bash
-# Clonar (cuando exista el repo en GitHub)
 cd /home/serpro
-git clone https://github.com/Yaschi17/serprotechno-web.git serprotechno-web
-cd serprotechno-web
+git clone https://github.com/Yaschi17/serpro-web.git serpro-web
+cd serpro-web
 cp .env.example .env
 bash scripts/update.sh
 ```
@@ -34,7 +35,7 @@ El sitio queda en **http://127.0.0.1:3000** dentro del servidor.
 ## 3. Cloudflare Tunnel (serprotechno.com)
 
 1. [Cloudflare Zero Trust](https://one.dash.cloudflare.com) → **Networks** → **Tunnels**
-2. Usa el túnel existente de SerPro **o** crea uno: `serprotechno-web`
+2. Usa el túnel existente de SerPro **o** crea uno: `serpro-web`
 3. **Public Hostname** → Add:
 
 | Campo | Valor |
@@ -56,7 +57,7 @@ CLOUDFLARE_TUNNEL_TOKEN=eyJ...
 5. Arranca el túnel:
 
 ```bash
-cd /home/serpro/serprotechno-web
+cd /home/serpro/serpro-web
 docker compose --profile tunnel up -d
 ```
 
