@@ -1,5 +1,6 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
+import { CookieBanner } from "@/components/landing/CookieBanner";
 import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
@@ -68,5 +69,10 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
-  return <Outlet />;
+  return (
+    <>
+      <Outlet />
+      <CookieBanner />
+    </>
+  );
 }

@@ -1,10 +1,12 @@
 import logo from "@/assets/serpro-logo.png";
+import { Link } from "@tanstack/react-router";
 import { nav, site } from "@/content/landing";
+import { legalLinks } from "@/content/legal";
 
 export function Footer() {
   return (
     <footer className="site-footer">
-      <div className="relative z-10 mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-3">
+      <div className="relative z-10 mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <img src={logo} alt={site.name} className="h-9 w-auto" />
           <p className="mt-3 max-w-sm text-sm text-muted-foreground">{site.footer}</p>
@@ -18,6 +20,19 @@ export function Footer() {
                 <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground">
                   {link.label}
                 </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <p className="text-sm font-semibold">Legal</p>
+          <ul className="mt-3 space-y-2">
+            {legalLinks.map((link) => (
+              <li key={link.href}>
+                <Link to={link.href} className="text-sm text-muted-foreground hover:text-foreground">
+                  {link.label}
+                </Link>
               </li>
             ))}
           </ul>

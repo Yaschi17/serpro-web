@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { Facebook, MessageCircle, PhoneCall, Send } from "lucide-react";
 import { contact, site } from "@/content/landing";
 import { Card, Section, SectionHeader } from "@/components/landing/ui";
@@ -136,7 +137,13 @@ export function Contact() {
               <Send className="h-4 w-4" />
               Enviar consulta por WhatsApp
             </button>
-            <p className="text-xs text-muted-foreground">{contact.formNote}</p>
+            <p className="text-xs text-muted-foreground">
+              {contact.formNote} Al enviar, acepta nuestra{" "}
+              <Link to="/politica-de-privacidad" className="underline hover:text-foreground">
+                política de privacidad
+              </Link>
+              .
+            </p>
           </form>
         </Card>
       </div>

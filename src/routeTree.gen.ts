@@ -9,8 +9,26 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TerminosYCondicionesRouteImport } from './routes/terminos-y-condiciones'
+import { Route as PoliticaDePrivacidadRouteImport } from './routes/politica-de-privacidad'
+import { Route as AvisoDeCookiesRouteImport } from './routes/aviso-de-cookies'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TerminosYCondicionesRoute = TerminosYCondicionesRouteImport.update({
+  id: '/terminos-y-condiciones',
+  path: '/terminos-y-condiciones',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoliticaDePrivacidadRoute = PoliticaDePrivacidadRouteImport.update({
+  id: '/politica-de-privacidad',
+  path: '/politica-de-privacidad',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AvisoDeCookiesRoute = AvisoDeCookiesRouteImport.update({
+  id: '/aviso-de-cookies',
+  path: '/aviso-de-cookies',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +37,74 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/aviso-de-cookies': typeof AvisoDeCookiesRoute
+  '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
+  '/terminos-y-condiciones': typeof TerminosYCondicionesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/aviso-de-cookies': typeof AvisoDeCookiesRoute
+  '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
+  '/terminos-y-condiciones': typeof TerminosYCondicionesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/aviso-de-cookies': typeof AvisoDeCookiesRoute
+  '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
+  '/terminos-y-condiciones': typeof TerminosYCondicionesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/aviso-de-cookies'
+    | '/politica-de-privacidad'
+    | '/terminos-y-condiciones'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/aviso-de-cookies'
+    | '/politica-de-privacidad'
+    | '/terminos-y-condiciones'
+  id:
+    | '__root__'
+    | '/'
+    | '/aviso-de-cookies'
+    | '/politica-de-privacidad'
+    | '/terminos-y-condiciones'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AvisoDeCookiesRoute: typeof AvisoDeCookiesRoute
+  PoliticaDePrivacidadRoute: typeof PoliticaDePrivacidadRoute
+  TerminosYCondicionesRoute: typeof TerminosYCondicionesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terminos-y-condiciones': {
+      id: '/terminos-y-condiciones'
+      path: '/terminos-y-condiciones'
+      fullPath: '/terminos-y-condiciones'
+      preLoaderRoute: typeof TerminosYCondicionesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/politica-de-privacidad': {
+      id: '/politica-de-privacidad'
+      path: '/politica-de-privacidad'
+      fullPath: '/politica-de-privacidad'
+      preLoaderRoute: typeof PoliticaDePrivacidadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/aviso-de-cookies': {
+      id: '/aviso-de-cookies'
+      path: '/aviso-de-cookies'
+      fullPath: '/aviso-de-cookies'
+      preLoaderRoute: typeof AvisoDeCookiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +117,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AvisoDeCookiesRoute: AvisoDeCookiesRoute,
+  PoliticaDePrivacidadRoute: PoliticaDePrivacidadRoute,
+  TerminosYCondicionesRoute: TerminosYCondicionesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
